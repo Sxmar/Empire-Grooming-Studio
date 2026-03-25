@@ -386,11 +386,19 @@ const SHOP = {
 
 
 /* ──────────────────────────────────────────────
-   6. FOOTER — current year
+   6. FOOTER — current year + today's hours
 ────────────────────────────────────────────── */
 (function setYear() {
   const el = document.getElementById('year');
   if (el) el.textContent = new Date().getFullYear();
+
+  // Highlight today's row in the hours list
+  const list = document.getElementById('hours-list');
+  if (list) {
+    const dayIdx = new Date().getDay(); // 0=Sun … 6=Sat
+    const rows = list.querySelectorAll('li');
+    if (rows[dayIdx]) rows[dayIdx].classList.add('today');
+  }
 })();
 
 
